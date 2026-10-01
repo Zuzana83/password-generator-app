@@ -173,8 +173,14 @@ input[type="range"] {
 /* --- Webkit Browsers --- */
 input[type="range"]::-webkit-slider-runnable-track {
   height: 0.8rem;
-  background-color: var(--grey-850);
-  border-radius: 1rem;
+  background-image: linear-gradient(
+    to right,
+    var(--green-200) 0%,
+    var(--green-200) var(--fill, 0%),
+    var(--grey-850) var(--fill, 0%),
+    var(--grey-850) 100%
+);
+  border-radius: 0;
   border: none;
   box-shadow: none;
 }
@@ -194,7 +200,7 @@ input[type="range"]::-webkit-slider-thumb {
 input[type="range"]::-moz-range-track {
   height: 0.8rem;
   background-color: var(--grey-850);
-  border-radius: 1rem;
+  border-radius: 0;
   border: none;
   box-shadow: none;
 }
@@ -206,6 +212,12 @@ input[type="range"]::-moz-range-thumb {
   border-radius: 2rem;
   border: none;
   box-shadow: none;
+}
+
+input[type="range"]::-moz-range-progress {
+    background-color: var(--green-200);
+    height: 0.8rem;
+    border-radius: 1rem;
 }
 
 fieldset {
@@ -307,6 +319,31 @@ fieldset {
     margin-right: 0.5rem;
 }
 
+/* nth-child(-n+3) select all children up to and including the 3rd one */
+/* Extra Weak - 1 red bar */
+.indicators-wrapper.extra-weak .indicator:nth-child(-n+1) {
+    background-color: var(--clr-red);
+    border-color: var(--clr-red);
+}
+
+/* Weak - 2 orange bars */
+.indicators-wrapper.weak .indicator:nth-child(-n+2) {
+    background-color: var(--clr-orange);
+    border-color: var(--clr-orange);
+}
+
+/* Medium - 3 yellow bars */
+.indicators-wrapper.medium .indicator:nth-child(-n+3) {
+    background-color: var(--clr-yellow);
+    border-color: var(--clr-yellow);
+}
+
+/* Strong - 4 green bars */
+.indicators-wrapper.strong .indicator:nth-child(-n+4) {
+    background-color: var(--clr-neon-green);
+    border-color: var(--clr-neon-green);
+}
+
 .form-btn {
     width: 100%;
     display: block;
@@ -314,10 +351,29 @@ fieldset {
     background-color: var(--green-200);
     color: var(--grey-800);
     text-transform: uppercase;
+    border: 2px solid var(--green-200);
 }
 
 .form-btn svg {
     margin-left: 1.6rem;
+}
+
+.form-btn:hover {
+    background-color: transparent;
+    color: var(--green-200);
+}
+
+.form-btn:hover svg path {
+    fill: var(--green-200);
+}
+
+/* Focus states */
+input[type="number"]:focus-visible,
+.copy-btn:focus-visible,
+.form-input:focus-visible,
+.form-btn:focus-visible {
+    outline: 2px solid var(--yellow-300);
+    outline-offset: 3px;
 }
 
 /* MEDIA QUERIES */
