@@ -14,7 +14,7 @@
       <h1 class="page-title">Password Generator</h1>
       <!-- Password and copy to clipboard button -->
       <div class="password-wrapper">
-        <p class="password-text" id="generatedPwd" aria-live="polite">P4$5W0rD!</p>
+        <p class="password-text" id="generatedPwd" aria-live="polite"></p>
         <button type="button" class="copy-btn" id="clipboardCopyBtn" aria-label="Copy To Clipboard" data-tooltip="COPIED">
           <svg width="21" height="24" xmlns="http://www.w3.org/2000/svg" focusable="false"><path d="M20.341 3.091 17.909.659A2.25 2.25 0 0 0 16.319 0H8.25A2.25 2.25 0 0 0 6 2.25V4.5H2.25A2.25 2.25 0 0 0 0 6.75v15A2.25 2.25 0 0 0 2.25 24h10.5A2.25 2.25 0 0 0 15 21.75V19.5h3.75A2.25 2.25 0 0 0 21 17.25V4.682a2.25 2.25 0 0 0-.659-1.591ZM12.469 21.75H2.53a.281.281 0 0 1-.281-.281V7.03a.281.281 0 0 1 .281-.281H6v10.5a2.25 2.25 0 0 0 2.25 2.25h4.5v1.969a.282.282 0 0 1-.281.281Zm6-4.5H8.53a.281.281 0 0 1-.281-.281V2.53a.281.281 0 0 1 .281-.281H13.5v4.125c0 .621.504 1.125 1.125 1.125h4.125v9.469a.282.282 0 0 1-.281.281Zm.281-12h-3v-3h.451c.075 0 .147.03.2.082L18.667 4.6a.283.283 0 0 1 .082.199v.451Z" fill="#A4FFAF"/></svg>
         </button>
@@ -28,28 +28,31 @@
           <input type="range" name="length" min="0" max="20" value="0" step="1" id="charLengthRange">
         </header>
         <!-- Options wrapper -->
-        <div class="options-wrapper">
-          <!-- Uppercase -->
-          <div class="checkbox-input-row">
-            <input type="checkbox" name="options" id="uppercase" class="form-input">
-            <label for="uppercase" class="form-label">Include Uppercase Letters</label>
+        <fieldset>
+          <legend class="sr-only">Password Options</legend>
+          <div class="options-wrapper">
+            <!-- Uppercase -->
+            <div class="checkbox-input-row">
+              <input type="checkbox" name="options" id="uppercase" class="form-input">
+              <label for="uppercase" class="form-label">Include Uppercase Letters</label>
+            </div>
+            <!-- Lowercase -->
+            <div class="checkbox-input-row">
+              <input type="checkbox" name="options" id="lowercase" class="form-input">
+              <label for="lowercase" class="form-label">Include Lowercase Letters</label>
+            </div>
+            <!-- Numbers -->
+            <div class="checkbox-input-row">
+              <input type="checkbox" name="options" id="numbers" class="form-input">
+              <label for="numbers" class="form-label">Include Numbers</label>
+            </div>
+            <!-- Symbols -->
+            <div class="checkbox-input-row">
+              <input type="checkbox" name="options" id="symbols" class="form-input">
+              <label for="symbols" class="form-label">Include Symbols</label>
+            </div>
           </div>
-          <!-- Lowercase -->
-          <div class="checkbox-input-row">
-            <input type="checkbox" name="options" id="lowercase" class="form-input">
-            <label for="lowercase" class="form-label">Include Lowercase Letters</label>
-          </div>
-          <!-- Numbers -->
-          <div class="checkbox-input-row">
-            <input type="checkbox" name="options" id="numbers" class="form-input">
-            <label for="numbers" class="form-label">Include Numbers</label>
-          </div>
-          <!-- Symbols -->
-          <div class="checkbox-input-row">
-            <input type="checkbox" name="options" id="symbols" class="form-input">
-            <label for="symbols" class="form-label">Include Symbols</label>
-          </div>
-        </div>
+        </fieldset>
         <div class="pwd-strength-wrapper" aria-live="polite" aria-atomic="true">
           <p class="strength">strength</p>
           <div class="indicators-wrapper">

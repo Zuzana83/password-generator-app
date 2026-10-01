@@ -72,7 +72,7 @@ button {
 .page-title {
     font-size: 1.6rem;
     letter-spacing: 0px;
-    line-height: 20px;
+    line-height: 2rem;
     color: var(--grey-600);
     text-align: center;
     margin-bottom: 1.6rem;
@@ -90,6 +90,12 @@ button {
 .password-text {
     font-size: 2.4rem;
     line-height: 3.2rem;
+    color: var(--white);
+    position: relative;
+}
+
+.password-text:empty::after {
+    content: "P4$5W0rD!";
     color: var(--grey-700);
 }
 
@@ -115,6 +121,11 @@ button {
     list-style: 2.4rem;
     opacity: 0;
     visibility: hidden;
+}
+
+.copy-btn.copied::after {
+    opacity: 1;
+    visibility: visible;
 }
 
 .pwd-generator-form {
@@ -197,6 +208,10 @@ input[type="range"]::-moz-range-thumb {
   box-shadow: none;
 }
 
+fieldset {
+    border: none;
+}
+
 .options-wrapper {
     margin-block: 3.2rem;
 }
@@ -275,8 +290,8 @@ input[type="range"]::-moz-range-thumb {
 
 .strength-result {
     color: var(--grey-200);
-    font-size: 2.4rem;
-    line-height: 3.2rem;
+    font-size: 1.8rem;
+    line-height: 2.4rem;
     margin-right: 1.6rem;
     text-transform: uppercase;
 }
@@ -303,4 +318,58 @@ input[type="range"]::-moz-range-thumb {
 
 .form-btn svg {
     margin-left: 1.6rem;
+}
+
+/* MEDIA QUERIES */
+@media screen and (min-width: 48rem) {
+    .page-title {
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+        margin-bottom: 3.2rem;
+    }
+
+    .password-wrapper {
+        padding: 1.6rem 3.2rem;
+        margin-bottom: 2.4rem;
+    }
+
+    .password-text {
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+    }
+
+    .pwd-generator-form {
+        padding: 2.8rem 3.2rem;
+    }
+
+    .form-header {
+        row-gap: 1.6rem;
+    }
+
+    .form-header label {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .char-length-input {
+        width: 2ch;
+        font-size: 3.2rem;
+        line-height: 4.2rem;
+    }
+
+    .form-label,
+    .strength,
+    .form-btn  {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .pwd-strength-wrapper {
+        margin-bottom: 3.2rem;
+    }
+
+    .strength-result {
+        font-size: 2.4rem;
+        line-height: 3.2rem;
+    }
 }
