@@ -55,14 +55,17 @@
         </fieldset>
         <div class="pwd-strength-wrapper" aria-live="polite" aria-atomic="true">
           <p class="strength">strength</p>
-          <div class="indicators-wrapper">
+          <div class="strength-indicator-wrapper">
             <p class="strength-result" id="strengthResult"></p>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-            <span class="indicator"></span>
-          </div>
+            <div class="indicators-wrapper">
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+                <span class="indicator"></span>
+            </div>
+          </div> 
         </div>
+        <small class="err-msg" id="errMsg"></small>
         <button type="submit" class="form-btn" id="generatePwdBtn">
           generate<svg width="12" height="12" xmlns="http://www.w3.org/2000/svg"><path fill="#24232C" d="m5.106 12 6-6-6-6-1.265 1.265 3.841 3.84H.001v1.79h7.681l-3.841 3.84z"/></svg>
         </button>

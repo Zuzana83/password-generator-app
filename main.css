@@ -118,7 +118,7 @@ button {
     transform: translate(-120%, -2%);
     color: var(--green-200);
     font-size: 1.8rem;
-    list-style: 2.4rem;
+    line-height: 2.4rem;
     opacity: 0;
     visibility: hidden;
 }
@@ -210,14 +210,29 @@ input[type="range"]::-moz-range-thumb {
   width: 2.8rem;
   background: var(--grey-200);
   border-radius: 2rem;
-  border: none;
+  border: 2px solid transparent;
   box-shadow: none;
 }
 
 input[type="range"]::-moz-range-progress {
     background-color: var(--green-200);
     height: 0.8rem;
-    border-radius: 1rem;
+    border-radius: 0;
+}
+
+input[type="range"]:hover::-moz-range-thumb {
+    background-color: var(--grey-850);
+    border-color: var(--green-200);
+}
+
+input[type="range"]:hover::-webkit-slider-thumb  {
+    background-color: var(--grey-850);
+    border-color: var(--green-200);
+}
+
+input[type="range"]:focus-visible {
+    outline: 2px solid var(--yellow-300);
+    outline-offset: 0.8rem;
 }
 
 fieldset {
@@ -295,6 +310,12 @@ fieldset {
     text-transform: uppercase;
 }
 
+.strength-indicator-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+}
+
 .indicators-wrapper {
     display: flex;
     align-items: center;
@@ -304,7 +325,6 @@ fieldset {
     color: var(--grey-200);
     font-size: 1.8rem;
     line-height: 2.4rem;
-    margin-right: 1.6rem;
     text-transform: uppercase;
 }
 
@@ -322,26 +342,26 @@ fieldset {
 /* nth-child(-n+3) select all children up to and including the 3rd one */
 /* Extra Weak - 1 red bar */
 .indicators-wrapper.extra-weak .indicator:nth-child(-n+1) {
-    background-color: var(--clr-red);
-    border-color: var(--clr-red);
+    background-color: var(--red-500);
+    border-color: var(--red-500);
 }
 
 /* Weak - 2 orange bars */
 .indicators-wrapper.weak .indicator:nth-child(-n+2) {
-    background-color: var(--clr-orange);
-    border-color: var(--clr-orange);
+    background-color: var(--orange-400);
+    border-color: var(--orange-400);
 }
 
 /* Medium - 3 yellow bars */
 .indicators-wrapper.medium .indicator:nth-child(-n+3) {
-    background-color: var(--clr-yellow);
-    border-color: var(--clr-yellow);
+    background-color: var(--yellow-300);
+    border-color: var(--yellow-300);
 }
 
 /* Strong - 4 green bars */
 .indicators-wrapper.strong .indicator:nth-child(-n+4) {
-    background-color: var(--clr-neon-green);
-    border-color: var(--clr-neon-green);
+    background-color: var(--green-200);
+    border-color: var(--green-200);
 }
 
 .form-btn {
@@ -374,6 +394,17 @@ input[type="number"]:focus-visible,
 .form-btn:focus-visible {
     outline: 2px solid var(--yellow-300);
     outline-offset: 3px;
+}
+
+.err-msg {
+    font-size: 1.2rem;
+    margin-bottom: .8rem;
+    color: var(--red-500);
+    display: none;
+}
+
+.err-msg.show {
+    display: inline-block;
 }
 
 /* MEDIA QUERIES */
@@ -426,6 +457,6 @@ input[type="number"]:focus-visible,
 
     .strength-result {
         font-size: 2.4rem;
-        line-height: 3.2rem;
+        line-height: 2rem;
     }
 }
