@@ -174,19 +174,22 @@ generatePwdFormEl.addEventListener("submit", handleSubmit);
 const copyToClipboard = async() => {
     try {
         await navigator.clipboard.writeText(generatedPwdEl.textContent);
-        copyBtnEl.classList.add("copied");
+        copyBtnEl.classList.add("copied"); 
     } catch(error) {
         console.error("Clipboard failed:", error);
-        // fallback for older browsers
         const textarea = document.createElement("textarea");
         textarea.value = generatedPwdEl.textContent;
         textarea.style.position = "fixed";
         textarea.style.opacity = "0";
         document.body.appendChild(textarea);
         textarea.select();
-        document.execCommand("copy");
+        const success = document.execCommand("copy");
         document.body.removeChild(textarea);
-        copyBtnEl.classList.add("copied");
+        if(success) {
+            copyBtnEl.classList.add("copied");
+        } else {
+            showErrMessage("Unable to copy. Please select and copy manually.");
+        }
     }
 }
 
