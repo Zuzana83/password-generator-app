@@ -10,6 +10,7 @@ const generatedPwdEl = document.getElementById("generatedPwd");
 const copyBtnEl = document.getElementById("clipboardCopyBtn");
 const indicatorsWrapperEl = document.querySelector(".indicators-wrapper");
 const strengthResultEl = document.getElementById("strengthResult");
+const copyStatusEl = document.getElementById("copyStatus");
 
 const UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 const LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
@@ -187,8 +188,10 @@ const copyToClipboard = async() => {
         document.body.removeChild(textarea);
         if(success) {
             copyBtnEl.classList.add("copied");
+            copyStatusEl.textContent = "Password copied to clipboard!";
         } else {
             showErrMessage("Unable to copy. Please select and copy manually.");
+            copyStatusEl.textContent = "Copy failed. Please copy manually.";
         }
     }
 }
@@ -198,6 +201,7 @@ copyBtnEl.addEventListener("click", async () => {
     await copyToClipboard();
     setTimeout(function() {
         copyBtnEl.classList.remove("copied");
+        copyStatusEl.textContent = "";
     }, 1500);
 });
 
