@@ -33,8 +33,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: (https://github.com/Zuzana83/password-generator-app)
-- Live Site URL: (https://zuzana83.github.io/password-generator-app/)
+- Solution URL: [Code](https://github.com/Zuzana83/password-generator-app)
+- Live Site URL: [Live site](https://zuzana83.github.io/password-generator-app/)
 
 
 ## My Process

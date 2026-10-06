@@ -94,35 +94,45 @@ const calculatePasswordStrength = (password) => {
     }
 }
 
+const getRandomIndex = (maxLength) => {
+    const randomBuffer = new Uint32Array(1);
+    crypto.getRandomValues(randomBuffer);
+    // % max keeps number within range
+    // e.g. 2847392847 % 26 = some number 0-25
+    return randomBuffer[0] % maxLength;
+}
+
 const generatePassword = (length, charPool, upper, lower, number, symbol) => {
     let passwordText = "";
     if(upper) {
-        let upperCh = UPPERCASE[Math.floor(Math.random()* UPPERCASE.length)];
+        let upperCh = UPPERCASE[getRandomIndex(UPPERCASE.length)];
         passwordText += upperCh;
     }
     if(lower) {
-        let lowerCh = LOWERCASE[Math.floor(Math.random()* LOWERCASE.length)];
+        let lowerCh = LOWERCASE[getRandomIndex(LOWERCASE.length)];
         passwordText += lowerCh;
     }
     if(number) {
-        let numCh = NUMBERS[Math.floor(Math.random()* NUMBERS.length)];
+        let numCh = NUMBERS[getRandomIndex(NUMBERS.length)];
         passwordText += numCh;
     }
     if(symbol) {
-        let symCh = SYMBOLS[Math.floor(Math.random()* SYMBOLS.length)];
+        let symCh = SYMBOLS[getRandomIndex(SYMBOLS.length)];
         passwordText += symCh;
     }
 
     let pwdRest = "";
     for(let i = 0; i < length - passwordText.length; i++) {
-        const randomIdx = Math.floor(Math.random() * charPool.length);
-        const randomChar = charPool[randomIdx];
+        const randomChar = charPool[getRandomIndex(charPool.length)];
         pwdRest += randomChar;
     }
    
     let pwdFinish = passwordText + pwdRest;
+    console.log(pwdFinish);
+    
     pwdFinish = shuffleArray(pwdFinish.split(""));
     pwdFinish = pwdFinish.join("");
+    console.log(pwdFinish);
 
     generatedPwdEl.textContent = pwdFinish;
 
@@ -209,7 +219,8 @@ copyBtnEl.addEventListener("click", async () => {
 // Link to article https://medium.com/@khaledhassan45/how-to-shuffle-an-array-in-javascript-6ca30d53f772
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
+        // const j = Math.floor(Math.random() * (i + 1));
+        const j = getRandomIndex(i + 1);
         [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
